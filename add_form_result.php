@@ -5,50 +5,50 @@ define("NOT_CHECK_PERMISSIONS", true);
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 ?>
 <?$tmp = implode(",",$_POST);
-print_r($tmp); //êîíòðîëü ïåðåäà÷è
+print_r($tmp); //ÃªÃ®Ã­Ã²Ã°Ã®Ã«Ã¼ Ã¯Ã¥Ã°Ã¥Ã¤Ã Ã·Ã¨
 ?>
 
 
 <?
     CModule::IncludeModule('iblock');
-    //Ïîãíàëè
+    //ÃÃ®Ã£Ã­Ã Ã«Ã¨
     $el = new CIBlockElement;
     $iblock_id = 4;
     $section_id = false;
-    $section_id[$i] = $_POST['section_id']; //Ðàçäåëû äëÿ äîáàâëåíèÿ
+    $section_id[$i] = $_POST['section_id']; //ÃÃ Ã§Ã¤Ã¥Ã«Ã» Ã¤Ã«Ã¿ Ã¤Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã¨Ã¿
 
-    //Ñâîéñòâà
+    //Ã‘Ã¢Ã®Ã©Ã±Ã²Ã¢Ã 
     $PROP = array();
 
-    $PROP['SUMMA'] = $_POST['credit']; //Ñâîéñòâî ÷èñëî
-    $PROP['EMAIL'] = $_POST['mail']; //Ñâîéñòâî ñïèñîê
-	$PROP['SURNAME'] = $_POST['user']; //Ñâîéñòâî ñïèñîê
+    $PROP['SUMMA'] = $_POST['credit']; //Ã‘Ã¢Ã®Ã©Ã±Ã²Ã¢Ã® Ã·Ã¨Ã±Ã«Ã®
+    $PROP['EMAIL'] = $_POST['mail']; //Ã‘Ã¢Ã®Ã©Ã±Ã²Ã¢Ã® Ã±Ã¯Ã¨Ã±Ã®Ãª
+	$PROP['SURNAME'] = $_POST['user']; //Ã‘Ã¢Ã®Ã©Ã±Ã²Ã¢Ã® Ã±Ã¯Ã¨Ã±Ã®Ãª
 
 
 
-    //Îñíîâíûå ïîëÿ ýëåìåíòà
+    //ÃŽÃ±Ã­Ã®Ã¢Ã­Ã»Ã¥ Ã¯Ã®Ã«Ã¿ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã 
     $fields = array(
-         "DATE_CREATE" => date("d.m.Y H:i:s"), //Ïåðåäàåì äàòà ñîçäàíèÿ
-    "CREATED_BY" => $GLOBALS['USER']->GetID(),    //Ïåðåäàåì ID ïîëüçîâàòåëÿ êòî äîáàâëÿåò
-    "IBLOCK_SECTION" => false, //ID ðàçäåëîâèáî íåò îòäåëüíîãî ðàçäåëà
-    "IBLOCK_ID" => 4, //ID èíôîðìàöèîííîãî áëîêà îí 4-ûé
-    "PROPERTY_VALUES" => $PROP, // Ïåðåäàåì ìàññèâ çíà÷åíèè äëÿ ñâîéñòâ
+         "DATE_CREATE" => date("d.m.Y H:i:s"), //ÃÃ¥Ã°Ã¥Ã¤Ã Ã¥Ã¬ Ã¤Ã Ã²Ã  Ã±Ã®Ã§Ã¤Ã Ã­Ã¨Ã¿
+    "CREATED_BY" => $GLOBALS['USER']->GetID(),    //ÃÃ¥Ã°Ã¥Ã¤Ã Ã¥Ã¬ ID Ã¯Ã®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¥Ã«Ã¿ ÃªÃ²Ã® Ã¤Ã®Ã¡Ã Ã¢Ã«Ã¿Ã¥Ã²
+    "IBLOCK_SECTION" => false, //ID Ã°Ã Ã§Ã¤Ã¥Ã«Ã®Ã¢Ã¨Ã¡Ã® Ã­Ã¥Ã² Ã®Ã²Ã¤Ã¥Ã«Ã¼Ã­Ã®Ã£Ã® Ã°Ã Ã§Ã¤Ã¥Ã«Ã 
+    "IBLOCK_ID" => 4, //ID Ã¨Ã­Ã´Ã®Ã°Ã¬Ã Ã¶Ã¨Ã®Ã­Ã­Ã®Ã£Ã® Ã¡Ã«Ã®ÃªÃ  Ã®Ã­ 4-Ã»Ã©
+    "PROPERTY_VALUES" => $PROP, // ÃÃ¥Ã°Ã¥Ã¤Ã Ã¥Ã¬ Ã¬Ã Ã±Ã±Ã¨Ã¢ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã¨ Ã¤Ã«Ã¿ Ã±Ã¢Ã®Ã©Ã±Ã²Ã¢
     "NAME" => $_POST['user'],
-    "ACTIVE" => "Y", //ïîóìîë÷àíèþ äåëàåì àêòèâíûì èëè ñòàâèì N äëÿ îòêëþ÷åíèè ïîóìîë÷àíèþ
+    "ACTIVE" => "Y", //Ã¯Ã®Ã³Ã¬Ã®Ã«Ã·Ã Ã­Ã¨Ã¾ Ã¤Ã¥Ã«Ã Ã¥Ã¬ Ã ÃªÃ²Ã¨Ã¢Ã­Ã»Ã¬ Ã¨Ã«Ã¨ Ã±Ã²Ã Ã¢Ã¨Ã¬ N Ã¤Ã«Ã¿ Ã®Ã²ÃªÃ«Ã¾Ã·Ã¥Ã­Ã¨Ã¨ Ã¯Ã®Ã³Ã¬Ã®Ã«Ã·Ã Ã­Ã¨Ã¾
     );
-    print_r ($fields); //êîíòðîëü ïåðåäà÷è
+    print_r ($fields); //ÃªÃ®Ã­Ã²Ã°Ã®Ã«Ã¼ Ã¯Ã¥Ã°Ã¥Ã¤Ã Ã·Ã¨
    $el->Add($fields);
 //}
 
 
 // CRM server conection data
-define('CRM_HOST', 'ajstyles.bitrix24.ru'); // your CRM domain name
+define('CRM_HOST', ''); // your CRM domain name
 define('CRM_PORT', '443'); // CRM server port
 define('CRM_PATH', '/crm/configs/import/lead.php'); // CRM server REST service path
 
 // CRM server authorization data
-define('CRM_LOGIN', 'sony183@bk.ru'); // login of a CRM user able to manage leads
-define('CRM_PASSWORD', '1q2w3e4r'); // password of a CRM user
+define('CRM_LOGIN', ''); // login of a CRM user able to manage leads
+define('CRM_PASSWORD', ''); // password of a CRM user
 // OR you can send special authorization hash which is sent by server after first successful connection with login and password
 //define('CRM_AUTH', 'e54ec19f0c5f092ea11145b80f465e1a'); // authorization hash
 
